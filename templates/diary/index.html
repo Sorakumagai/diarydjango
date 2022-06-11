@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一覧画面</title>
+</head>
+<body>
+    <h1>{{ title }}</h1>
+    <table border="1" width="400">
+        <tr align="center">
+            <th>名前</th>
+            <th>題名</th>
+            <th>作成日</th>
+        </tr>
+        {% for data in all_data %}
+            <tr>
+                <th>{{ data.name }}</th>
+                <th><a href="{% url 'diary:detail' data.id %}">{{ data.title }}</a></th>
+                <th>{{ data.create_date }}</th>
+            </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <a href="{% url 'diary:new' %}">新規作成</a>
+</body>
+</html>
